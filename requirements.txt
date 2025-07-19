@@ -1,0 +1,10 @@
+distlib==0.3.9
+dotenv==0.9.9
+filelock==3.17.0
+greenlet==3.2.3
+platformdirs==4.3.6
+playwright==1.53.0
+pyee==13.0.0
+python-dotenv==1.1.1
+typing_extensions==4.14.1
+virtualenv==20.29.1
