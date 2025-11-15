@@ -38,7 +38,7 @@ class AutomationYmobile(AutomationBase):
             self.page.wait_for_timeout(2000)
     
     def download_invoice(self):
-        self.page.get_by_role("link", name="料金案内").locator("..").click()
+        self.page.get_by_role("link", name="料金案内").locator("..").dblclick()
         self.page.wait_for_load_state()
         self.page.wait_for_timeout(2000)
         self.page.get_by_role("link", name="書面発行").click()
