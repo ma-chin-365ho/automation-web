@@ -37,7 +37,7 @@ class AutomationSoftBankBB(AutomationBase):
         self.page.wait_for_load_state()
         self.security_check()
         with self.page.expect_download() as download_info:
-            self.page.get_by_role("link", name="請求書PDFファイル").click()
+            self.page.get_by_role("link", name="請求内訳明細書PDFファイル").click()
         download = download_info.value
         download.save_as(os.path.join(PATH_DOWNLOADS, download.suggested_filename))
 
