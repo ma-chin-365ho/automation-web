@@ -41,3 +41,18 @@ class AutomationBase(ABC):
                 return True
             self.page.wait_for_timeout(1000)
         return False
+
+    def to_pass(self, func, max_cnt_retry, interval_msec):
+        cnt_retry = 0
+        while True:
+            try:
+                func()
+                return
+            except Exception as e:
+                print(e)
+                if cnt_retry >= max_cnt_retry:
+                    raise Exception("Retry Over!!")
+                else: 
+                    cnt_retry += 1
+                    print(f"Retry: {cnt_retry} Wait: {interval_msec}msec")
+                    self.page.wait_for_timeout(interval_msec)

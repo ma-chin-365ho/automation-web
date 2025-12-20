@@ -38,10 +38,13 @@ class AutomationYmobile(AutomationBase):
             self.page.wait_for_timeout(2000)
     
     def download_invoice(self):
-        self.page.get_by_role("link", name="料金案内").locator("..").dblclick()
-        self.page.wait_for_load_state()
-        self.page.wait_for_timeout(2000)
-        self.page.get_by_role("link", name="書面発行").click()
+        def click_paper_issue():
+            self.page.get_by_role("link", name="料金案内").locator("..").dblclick()
+            self.page.wait_for_load_state()
+            self.page.wait_for_timeout(2000)
+            self.page.get_by_role("link", name="書面発行").click()
+
+        self.to_pass(click_paper_issue, 3, 2000)
         self.page.wait_for_load_state()
         self.page.get_by_text("自分で印刷する（無料）").first.click()
         self.page.wait_for_load_state()
